@@ -26,6 +26,7 @@ The following environment variables influence the PostgreSQL configuration file.
 |  `POSTGRESQL_MAX_PREPARED_TRANSACTIONS` | Sets the maximum number of transactions that can be in the "prepared" state. If you are using prepared transactions, you will probably want this to be at least as large as max_connections |  0
 |  `POSTGRESQL_SHARED_BUFFERS`  | Sets how much memory is dedicated to PostgreSQL to use for caching data |  32M
 |  `POSTGRESQL_EFFECTIVE_CACHE_SIZE`  | Set to an estimate of how much memory is available for disk caching by the operating system and within the database itself |  128M
+|  `POSTGRESQL_ENABLE_REPLICATION`  | Streaming replication is enabled by default and requires up to 6.25 GiB additional disk space. Set to 0 if you don't need replication and want to run PostgreSQL with a small persistent volume |  1
 
 You can also set the following mount points by passing the `-v /host:/container` flag to Docker.
 
