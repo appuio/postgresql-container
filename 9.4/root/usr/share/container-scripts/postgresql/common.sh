@@ -111,7 +111,7 @@ function generate_postgresql_config() {
   if [ -n "${POSTGRESQL_ENABLE_REPLICATION}" ] && [ "${POSTGRESQL_ENABLE_REPLICATION}" != "0" ]; then
     envsubst \
         < "${CONTAINER_SCRIPTS_PATH}/openshift-custom-postgresql-replication.conf.template" \
-        > "${POSTGRESQL_CONFIG_FILE}"
+        >> "${POSTGRESQL_CONFIG_FILE}"
   fi
 }
 
