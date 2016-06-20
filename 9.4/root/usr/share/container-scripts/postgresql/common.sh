@@ -1,7 +1,7 @@
 # Configuration settings.
 export POSTGRESQL_MAX_CONNECTIONS=${POSTGRESQL_MAX_CONNECTIONS:-100}
 export POSTGRESQL_MAX_PREPARED_TRANSACTIONS=${POSTGRESQL_MAX_PREPARED_TRANSACTIONS:-0}
-export POSTGRESQL_ENABLE_REPLICATION=${POSTGRESQL_ENABLE_REPLICATION:-1}
+export POSTGRESQL_ENABLE_REPLICATION=${POSTGRESQL_ENABLE_REPLICATION:-true}
 
 # Perform auto-tuning based on the container cgroups limits (only when the
 # limits are set).
@@ -108,7 +108,7 @@ function generate_postgresql_config() {
       < "${CONTAINER_SCRIPTS_PATH}/openshift-custom-postgresql.conf.template" \
       > "${POSTGRESQL_CONFIG_FILE}"
 
-  if [ "${POSTGRESQL_ENABLE_REPLICATION}" != "0" ]; then
+  if [ "${POSTGRESQL_ENABLE_REPLICATION}" == "true" ]; then
     envsubst \
         < "${CONTAINER_SCRIPTS_PATH}/openshift-custom-postgresql-replication.conf.template" \
         >> "${POSTGRESQL_CONFIG_FILE}"
